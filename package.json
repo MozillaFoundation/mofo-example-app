@@ -1,39 +1,34 @@
 {
-  "name": "unicorn",
+  "name": "mofo-example-app",
   "version": "0.0.1",
-  "description": "Your project description here",
-  "keywords": [
-    "keywords",
-    "go",
-    "here"
-  ],
-  "homepage": "http:// ...",
+  "description": "The Mozilla Foundation example app upon which mountains can be built.",
+  "private": true,
   "bugs": {
-    "url": "http://github.com/mozillafoundation/unicorn/issues"
+    "url": "http://github.com/mozillafoundation/mofo-example-app"
   },
   "license": "MPL-2.0",
   "author": {
     "name": "Mozilla",
-    "url": "http://mozillafoundation.github.io/unicorn"
+    "url": "http://mozillafoundation.github.io/mofo-example-app"
   },
-  "contributors": [
-    "contributor name 1 <contrib1@example.org",
-    "contributor name 2 <contrib2@example.org",
-    "contributor name 3 <contrib3@example.org"
-  ],
-  "main": "if/neccesary/main.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/mozillafoundation/unicorn.git"
+    "url": "http://github.com/mozillafoundation/mofo-example-app"
   },
   "scripts": {
-    "install": "remember to ALWAYS make this command OS-agnostic",
-    "test": "remember to ALWAYS make this command OS-agnostic"
+    "postinstall": "bower install",
+    "test": "gulp test",
+    "build": "gulp"
   },
   "dependencies": {
-    "hapi": "^7.5.2",
+    "express": "^4.11.0",
     "page": "^1.5.0",
     "react": "^0.12.1"
   },
-  "devDependency": {}
+  "devDependencies": {
+    "browserify": "^8.1.0",
+    "gulp": "^3.8.10",
+    "jsxhint": "^0.9.0",
+    "react": "^0.12.2"
+  }
 }

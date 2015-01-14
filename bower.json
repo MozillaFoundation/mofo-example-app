@@ -1,0 +1,8 @@
+{
+  "name": "mofo-example-app",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "makerstrap": "~0.2.7"
+  }
+}

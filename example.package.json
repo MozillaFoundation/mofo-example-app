@@ -1,0 +1,44 @@
+{
+  "name": "unicorn",
+  "version": "0.0.1",
+  "description": "Your project description here",
+  "private": true,
+  "keywords": [
+    "keywords",
+    "go",
+    "here"
+  ],
+  "homepage": "http:// ...",
+  "bugs": {
+    "url": "http://github.com/mozillafoundation/unicorn/issues"
+  },
+  "license": "MPL-2.0",
+  "author": {
+    "name": "Mozilla",
+    "url": "http://mozillafoundation.github.io/unicorn"
+  },
+  "contributors": [
+    "contributor name 1 <contrib1@example.org",
+    "contributor name 2 <contrib2@example.org",
+    "contributor name 3 <contrib3@example.org"
+  ],
+  "main": "if/neccesary/main.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/mozillafoundation/unicorn.git"
+  },
+  "scripts": {
+    "install": "remember to ALWAYS make this command OS-agnostic",
+    "test": "remember to ALWAYS make this command OS-agnostic"
+  },
+  "dependencies": {
+    "express": "^4.11.0",
+    "page": "^1.5.0",
+    "react": "^0.12.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "jsxhint": "^0.9.0",
+    "react": "^0.12.2"
+  },
+}
