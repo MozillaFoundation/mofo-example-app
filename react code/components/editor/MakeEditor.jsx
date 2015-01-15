@@ -35,13 +35,14 @@ var MakeEditor = React.createClass({
   },
 
   render: function() {
-    return this.state.edit ? this.renderEditable() : this.renderStatic();
+    var btnClass = "btn btn-primary";
+    return this.state.edit ? this.renderEditable(btnClass) : this.renderStatic(btnClass);
   },
 
-  renderEditable: function() {
+  renderEditable: function(btnClass) {
     return (
       <div className="make-editor component">
-        <button onClick={this.setStatic}>save</button>
+        <button className={btnClass} onClick={this.setStatic}>save</button>
         <input value={this.state.make.name} onChange={this.editName}  />
         <input value={this.state.make.author} onChange={this.editAuthor} />
       </div>
@@ -53,10 +54,10 @@ var MakeEditor = React.createClass({
     this.save();
   },
 
-  renderStatic: function() {
+  renderStatic: function(btnClass) {
     return (
       <div className="make-editor component">
-        <button onClick={this.setEditable}>edit</button>
+        <button className={btnClass} onClick={this.setEditable}>edit</button>
         <h1 onClick={this.editName}>{this.state.make.name}</h1>
         <h2 onClick={this.editAuthor}>{this.state.make.author}</h2>
       </div>
