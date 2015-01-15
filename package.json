@@ -21,14 +21,27 @@
     "build": "gulp"
   },
   "dependencies": {
+    "body-parser": "^1.10.1",
     "express": "^4.11.0",
+    "open": "0.0.5",
     "page": "^1.5.0",
     "react": "^0.12.1"
   },
   "devDependencies": {
     "browserify": "^8.1.0",
+    "browserify-global-shim": "^1.0.0",
+    "es6": "0.0.7",
     "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.3",
+    "gulp-less": "^2.0.1",
+    "gulp-plumber": "^0.6.6",
+    "gulp-sourcemaps": "^1.3.0",
+    "gulp-uglify": "^1.0.2",
     "jsxhint": "^0.9.0",
-    "react": "^0.12.2"
+    "react": "^0.12.2",
+    "reactify": "^0.17.1",
+    "request": "^2.51.0",
+    "vinyl-source-stream": "^1.0.0",
+    "vinyl-transform": "^1.0.0"
   }
 }
