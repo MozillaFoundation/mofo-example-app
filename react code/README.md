@@ -1,0 +1,1 @@
+This is where all your React components live, in JSX form.
