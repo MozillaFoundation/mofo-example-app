@@ -1,6 +1,7 @@
 var React = require('react');
 var LogoType = require('./LogoType.jsx');
 var I18N = require('../../mixins/I18N');
+var LocalePicker= require('./LocalePicker.jsx');
 
 /**
  * In order for this component to truly shine, webmaker-login-UX should be a node
@@ -33,6 +34,7 @@ var WebmakerLoginUX = React.createClass({
       <div className="webmaker-login-ux component">
         <LogoType product="example app" />
         <span className="controls">
+          <LocalePicker />
           <button className={btnClass} onClick={this.joinWebmaker}>{this.state.strings.join}</button>
           <button className={btnClass} onClick={this.signIn}>{this.state.strings.signIn}</button>
           <button className={btnClass} onClick={this.signOut}>{this.state.strings.signOut}</button>

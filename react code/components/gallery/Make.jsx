@@ -31,7 +31,7 @@ var Make = React.createClass({
         <div><span className="label">{this.state.strings.author}</span>: {this.state.make.author}</div>
         <div>
           <span className="label">{this.state.strings.likes}</span>: {this.state.make.likes}
-          <span className="likes" onClick={this.like}> ♥ </span>
+          <span className="likes" onClick={this.like}> ♡ </span>
         </div>
         <div><span className="label">{this.state.strings.published}</span>: {created}</div>
         <a href={ this.props.editor + "/?make=" + this.state.make.id }>{this.state.strings.view}</a>
