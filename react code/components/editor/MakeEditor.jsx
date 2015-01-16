@@ -1,14 +1,22 @@
 var React = require('react');
 var request = require('superagent');
+var I18N = require("../../mixins/I18N");
 var Make = require("../../mixins/Make");
 
 var MakeEditor = React.createClass({
 
-  mixins: [Make],
+  mixins: [
+    I18N,
+    Make
+  ],
 
   getInitialState: function() {
     return {
       edit: false,
+      strings: {
+        edit: "Edit",
+        save: "Save"
+      },
       make: {}
     };
   },
@@ -30,7 +38,7 @@ var MakeEditor = React.createClass({
   renderEditable: function(btnClass) {
     return (
       <div className="make-editor component">
-        <button className={btnClass} onClick={this.setStatic}>save</button>
+        <button className={btnClass} onClick={this.setStatic}>{this.state.strings.save}</button>
         <input value={this.state.make.name} onChange={this.editName}  />
         <input value={this.state.make.author} onChange={this.editAuthor} />
       </div>
@@ -45,7 +53,7 @@ var MakeEditor = React.createClass({
   renderStatic: function(btnClass) {
     return (
       <div className="make-editor component">
-        <button className={btnClass} onClick={this.setEditable}>edit</button>
+        <button className={btnClass} onClick={this.setEditable}>{this.state.strings.edit}</button>
         <h1 onClick={this.editName}>{this.state.make.name}</h1>
         <h2 onClick={this.editAuthor}>{this.state.make.author}</h2>
       </div>
