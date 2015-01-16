@@ -1,6 +1,6 @@
 var React = require('react');
 var LogoType = require('./LogoType.jsx');
-var I18N = require('../../mixins/I18N.jsx');
+var I18N = require('../../mixins/I18N');
 
 /**
  * In order for this component to truly shine, webmaker-login-UX should be a node

@@ -31,8 +31,9 @@ var MakeGallery = React.createClass({
 
   buildMakes: function() {
     var editor = this.props.editor;
+    var apiserver = this.props.apiserver;
     return this.state.makes.map(function(make) {
-      return <Make {...make} key={make.id} editor={editor} />;
+      return <Make make={make} key={make.id} editor={editor} apiserver={apiserver} />;
     });
   }
 

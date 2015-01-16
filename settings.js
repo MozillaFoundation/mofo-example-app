@@ -2,7 +2,7 @@ module.exports = {
 
   // Where does the api server run?
   apiserver: "http://localhost:55555",
-  
+
   // where is the gallery located?
   gallery: "http://localhost:55555/gallery",
 
@@ -11,4 +11,5 @@ module.exports = {
 
   // resource hosting?
   cdn: "http://localhost:55555/cdn"
+
 };

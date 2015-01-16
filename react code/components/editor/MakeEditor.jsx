@@ -1,7 +1,10 @@
 var React = require('react');
 var request = require('superagent');
+var Make = require("../../mixins/Make");
 
 var MakeEditor = React.createClass({
+
+  mixins: [Make],
 
   getInitialState: function() {
     return {
@@ -16,22 +19,7 @@ var MakeEditor = React.createClass({
   },
 
   handleMake: function(err, data) {
-    this.make = JSON.parse(data.text).make;
-    this.setState({ make: this.make });
-  },
-
-  update: function() {
-    this.setState({ make: this.make });
-  },
-
-  save: function() {
-    var url = this.props.apiserver + "/api/1.0/crupdate/";
-    var payload = this.make
-    request.post(url).send(payload).end(this.handleSave);
-  },
-
-  handleSave: function(err, data) {
-    console.log(err, data);
+    this.setMake(JSON.parse(data.text).make);
   },
 
   render: function() {
@@ -51,7 +39,7 @@ var MakeEditor = React.createClass({
 
   setStatic: function() {
     this.setState({ edit: false });
-    this.save();
+    this.saveMake();
   },
 
   renderStatic: function(btnClass) {
@@ -66,22 +54,6 @@ var MakeEditor = React.createClass({
 
   setEditable: function() {
     this.setState({ edit: true });
-  },
-
-  editName: function(evt) {
-    var newname = evt.target.value;
-    if(newname) {
-      this.make.name = newname;
-      this.update();
-    }
-  },
-
-  editAuthor: function(evt) {
-    var newauthor = evt.target.value;
-    if(newauthor) {
-      this.make.author = newauthor;
-      this.update();
-    }
   }
 
 });
