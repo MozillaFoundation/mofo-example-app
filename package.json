@@ -16,7 +16,7 @@
     "url": "http://github.com/mozillafoundation/mofo-example-app"
   },
   "scripts": {
-    "postinstall": "bower install | gulp",
+    "postinstall": "bower install && gulp",
     "test": "gulp test",
     "build": "gulp"
   },
