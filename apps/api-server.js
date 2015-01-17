@@ -19,6 +19,7 @@ app.use(express.static(__dirname + '/public'));
 // make bower components universally findable by
 // pretending we have our own CDN running:
 app.use('/cdn', express.static(__dirname + '/../bower_components'));
+app.use('/cdn', express.static(__dirname + '/../node_modules'));
 
 // bind API routes
 routes.setup(app);

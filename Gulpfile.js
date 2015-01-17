@@ -10,7 +10,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 
 // Don't process react. We'll link to its CDN minified version.
-// This is
+// The reasoning here is that we're not offering one app, we're
+// offering lots of apps, and bundling react with each app is
+// both bloat, and an uncachable resource. Both are bad.
 var donottouch = require('browserify-global-shim').configure({
   'react': 'React'
 });
@@ -18,7 +20,7 @@ var donottouch = require('browserify-global-shim').configure({
 /**
  * Browserify bundling of gallery app.
  */
-gulp.task('gallery', function() {
+gulp.task('bundle-gallery', function() {
   return browserify('./react code/gallery-app.jsx')
     .transform(reactify)
     .transform(donottouch)
@@ -30,7 +32,7 @@ gulp.task('gallery', function() {
 /**
  * Minify gallery app
  */
-gulp.task('minify-gallery', ['gallery'], function() {
+gulp.task('minify-gallery', ['bundle-gallery'], function() {
   return gulp.src('./build/react/gallery-app.js')
     .pipe(uglify())
     .pipe(gulp.dest('./apps/public/gallery/javascript'));
@@ -39,7 +41,7 @@ gulp.task('minify-gallery', ['gallery'], function() {
 /**
  * Browserify bundling of editor app.
  */
-gulp.task('editor', function() {
+gulp.task('bundle-editor', function() {
   return browserify('./react code/editor-app.jsx')
     .transform(reactify)
     .transform(donottouch)
@@ -51,7 +53,7 @@ gulp.task('editor', function() {
 /**
  * Minify editor app
  */
-gulp.task('minify-editor', ['editor'], function() {
+gulp.task('minify-editor', ['bundle-editor'], function() {
   return gulp.src('./build/react/editor-app.js')
     .pipe(uglify())
     .pipe(gulp.dest('./apps/public/editor/javascript'));
