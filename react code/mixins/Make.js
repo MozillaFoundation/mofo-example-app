@@ -1,4 +1,4 @@
-var request = require('superagent');
+var request = require("superagent");
 
 module.exports = {
 

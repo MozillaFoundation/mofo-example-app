@@ -1,6 +1,6 @@
-var React = require('react');
-var WebmakerLoginUX = require('./webmaker-login-ux/WebmakerLoginUX.jsx');
-var MakeEditor = require('./editor/MakeEditor.jsx');
+var React = require("react");
+var WebmakerLoginUX = require("./webmaker-login-ux/WebmakerLoginUX.jsx");
+var MakeEditor = require("./editor/MakeEditor.jsx");
 
 var Editor = React.createClass({
 
@@ -15,7 +15,9 @@ var Editor = React.createClass({
     return (
       <div>
         <WebmakerLoginUX />
-        <MakeEditor apiserver={this.props.settings.apiserver} make={this.state.make} edit={this.state.edit} />
+        <MakeEditor apiserver={this.props.settings.apiserver}
+                    make={this.state.make}
+                    edit={this.state.edit} />
       </div>
     );
   }

@@ -1,5 +1,5 @@
-var React = require('react');
-var I18N = require('../../mixins/I18N');
+var React = require("react");
+var I18N = require("../../mixins/I18N");
 
 var LocalePicker = React.createClass({
 
@@ -15,7 +15,8 @@ var LocalePicker = React.createClass({
   render: function() {
     var strings = this.state.strings;
     var locales = Object.keys(this.state.strings).map(function(localeName) {
-      return <option value={localeName} key={localeName}>{strings[localeName]}</option>;
+      return <option value={localeName}
+                     key={localeName}>{strings[localeName]}</option>;
     });
     var props = {
       className: "language-picker component btn btn-default",

@@ -1,13 +1,13 @@
-var React = require('react');
-var LogoType = require('./LogoType.jsx');
-var I18N = require('../../mixins/I18N');
-var LocalePicker= require('./LocalePicker.jsx');
+var React = require("react");
+var LogoType = require("./LogoType.jsx");
+var I18N = require("../../mixins/I18N");
+var LocalePicker= require("./LocalePicker.jsx");
 
 /**
- * In order for this component to truly shine, webmaker-login-UX should be a node
- * module that does "the right thing" without being strictly tied to a DOM. That way,
- * the component can have buttons point to {this.login} and have the component
- * contain a handler like:
+ * In order for this component to truly shine, webmaker-login-UX should
+ * be a node module that does "the right thing" without being strictly
+ * tied to a DOM. That way, the component can have buttons point to
+ * {this.login} and have the component contain a handler like:
  *
  * login: function(evt) {
  *   webmakerloginxux.doSomething();
@@ -35,9 +35,12 @@ var WebmakerLoginUX = React.createClass({
         <LogoType product="example app" />
         <span className="controls">
           <LocalePicker />
-          <button className={btnClass} onClick={this.joinWebmaker}>{this.state.strings.join}</button>
-          <button className={btnClass} onClick={this.signIn}>{this.state.strings.signIn}</button>
-          <button className={btnClass} onClick={this.signOut}>{this.state.strings.signOut}</button>
+          <button className={btnClass}
+                  onClick={this.joinWebmaker}>{this.state.strings.join}</button>
+          <button className={btnClass}
+                  onClick={this.signIn}>{this.state.strings.signIn}</button>
+          <button className={btnClass}
+                  onClick={this.signOut}>{this.state.strings.signOut}</button>
         </span>
       </div>
     );

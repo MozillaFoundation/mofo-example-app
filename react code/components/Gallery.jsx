@@ -1,6 +1,6 @@
-var React = require('react');
-var WebmakerLoginUX = require('./webmaker-login-ux/WebmakerLoginUX.jsx');
-var MakeGallery = require('./gallery/MakeGallery.jsx');
+var React = require("react");
+var WebmakerLoginUX = require("./webmaker-login-ux/WebmakerLoginUX.jsx");
+var MakeGallery = require("./gallery/MakeGallery.jsx");
 
 var Gallery = React.createClass({
 
@@ -8,7 +8,8 @@ var Gallery = React.createClass({
     return (
       <div>
         <WebmakerLoginUX />
-        <MakeGallery apiserver={this.props.settings.apiserver} editor={this.props.settings.editor} />
+        <MakeGallery apiserver={this.props.settings.apiserver}
+                     editor={this.props.settings.editor} />
       </div>
     );
   }

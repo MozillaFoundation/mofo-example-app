@@ -57,4 +57,4 @@ module.exports = {
     document.dispatchEvent(evt);
   }
 
-}
+};
