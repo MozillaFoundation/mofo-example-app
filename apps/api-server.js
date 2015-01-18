@@ -6,11 +6,20 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     routes = require("./routes"),
-    app = express();
+    app = express(),
+    i18n = require("webmaker-i18n"),
+    settings = require("../settings.js"),
+    path = require("path");
 
 // some housekeeping:
 app.disable('x-powered-by');
 app.use(bodyParser.json({ limit: "500kb" }));
+
+app.use(i18n.middleware({
+  supported_languages: settings.supported_languages,
+  default_lang: settings.default_lang,
+  translation_directory: path.join( __dirname, '..', 'locale' )
+}));
 
 // We'll host gallery and editor from here, so that
 // we don't get rejected because of port shenannigans
