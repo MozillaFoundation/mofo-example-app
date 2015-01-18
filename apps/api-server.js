@@ -28,5 +28,5 @@ routes.setup(app);
 app.get('/', function(req, res) { res.redirect('/gallery'); });
 
 var server = app.listen(process.env.PORT || 55555, function() {
-  console.log('API server listening on port %d', server.address().port);
+  console.log('API server listening on http://localhost:%d', server.address().port);
 });
