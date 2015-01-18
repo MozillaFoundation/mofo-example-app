@@ -10,6 +10,12 @@ module.exports = {
   editor: "/editor",
 
   // resource hosting?
-  cdn: "/cdn"
+  cdn: "/cdn",
+
+  // supported languages for i18n
+  supported_languages: [ "en-US", "th" ],
+
+  // default language support
+  default_lang: "en-US"
 
 };
