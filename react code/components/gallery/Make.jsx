@@ -1,6 +1,6 @@
-var React = require('react');
-var I18N = require('../../mixins/I18N');
-var MakeMixin = require('../../mixins/Make');
+var React = require("react");
+var I18N = require("../../mixins/I18N");
+var MakeMixin = require("../../mixins/Make");
 
 var Make = React.createClass({
 
@@ -25,16 +25,27 @@ var Make = React.createClass({
 
   render: function() {
     var created = this.localizeDate(this.state.make.created);
+    var makehref = this.props.editor + "/?make=" + this.state.make.id;
     return (
       <div className="make component">
-        <div><span className="label">{this.state.strings.name}</span>: {this.state.make.name}</div>
-        <div><span className="label">{this.state.strings.author}</span>: {this.state.make.author}</div>
         <div>
-          <span className="label">{this.state.strings.likes}</span>: {this.state.make.likes}
+          <span className="label">{this.state.strings.name}</span>:
+          {this.state.make.name}
+        </div>
+        <div>
+          <span className="label">{this.state.strings.author}</span>:
+          {this.state.make.author}
+        </div>
+        <div>
+          <span className="label">{this.state.strings.likes}</span>:
+          {this.state.make.likes}
           <span className="likes" onClick={this.like}> ♡ </span>
         </div>
-        <div><span className="label">{this.state.strings.published}</span>: {created}</div>
-        <a href={ this.props.editor + "/?make=" + this.state.make.id }>{this.state.strings.view}</a>
+        <div>
+          <span className="label">{this.state.strings.published}</span>:
+          {created}
+        </div>
+        <a href={makehref}>{this.state.strings.view}</a>
       </div>
     );
   }

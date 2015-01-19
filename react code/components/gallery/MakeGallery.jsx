@@ -1,6 +1,6 @@
-var React = require('react');
-var Make = require('./Make.jsx');
-var request = require('superagent');
+var React = require("react");
+var Make = require("./Make.jsx");
+var request = require("superagent");
 
 var MakeGallery = React.createClass({
 
@@ -11,7 +11,8 @@ var MakeGallery = React.createClass({
   },
 
   componentDidMount: function() {
-    request.get(this.props.apiserver + "/api/1.0/findAll").end(this.handleMakes);
+    request.get(this.props.apiserver + "/api/1.0/findAll")
+           .end(this.handleMakes);
   },
 
   handleMakes: function(err, data) {
@@ -33,7 +34,10 @@ var MakeGallery = React.createClass({
     var editor = this.props.editor;
     var apiserver = this.props.apiserver;
     return this.state.makes.map(function(make) {
-      return <Make make={make} key={make.id} editor={editor} apiserver={apiserver} />;
+      return <Make make={make}
+                   key={make.id}
+                   editor={editor}
+                   apiserver={apiserver} />;
     });
   }
 

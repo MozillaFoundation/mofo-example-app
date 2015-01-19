@@ -9,6 +9,7 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 
+
 // Don't process react. We'll link to its CDN minified version.
 // The reasoning here is that we're not offering one app, we're
 // offering lots of apps, and bundling react with each app is
@@ -16,6 +17,7 @@ var uglify = require('gulp-uglify');
 var donottouch = require('browserify-global-shim').configure({
   'react': 'React'
 });
+
 
 /**
  * Browserify bundling of gallery app.
@@ -29,6 +31,7 @@ gulp.task('bundle-gallery', function() {
     .pipe(gulp.dest('./build/react'));
 });
 
+
 /**
  * Minify gallery app
  */
@@ -37,6 +40,7 @@ gulp.task('minify-gallery', ['bundle-gallery'], function() {
     .pipe(uglify())
     .pipe(gulp.dest('./apps/public/gallery/javascript'));
 });
+
 
 /**
  * Browserify bundling of editor app.
@@ -49,6 +53,7 @@ gulp.task('bundle-editor', function() {
     .pipe(source('editor-app.js'))
     .pipe(gulp.dest('./build/react'));
 });
+
 
 /**
  * Minify editor app
@@ -73,12 +78,32 @@ gulp.task('less', function() {
       .pipe(gulp.dest('./apps/public/gallery/stylesheets'));
 });
 
+
+/**
+ * Javascript and JSX linting
+ */
+gulp.task('lint', function() {
+  // set up jshint to make use of jshint-jsx, as we're mixing
+  // plain javascript with React's JSX.
+  var jshint = require('gulp-jshint');
+  var jsxhinter = require('jshint-jsx');
+  jsxhinter.JSHINT = jsxhinter.JSXHINT;
+
+  return gulp.src([
+      './lib/**/*.js',
+      './react code/**/*.js*'
+     ])
+    .pipe(jshint({ linter: 'jshint-jsx' }))
+    .pipe(jshint.reporter('default'));
+});
+
+
 /**
  * our "default" task runs everything, but -crucially- it
  * runs the subtasks in order. That means we'll wait for
  * files to be written before we move on to the next task,
  * because in this case we can't run parallel tasks.
  */
-gulp.task('default', ['less', 'minify-gallery', 'minify-editor'], function() {
+gulp.task('default', ['lint', 'less', 'minify-gallery', 'minify-editor'], function() {
   console.log("Finishing packing up.");
 });

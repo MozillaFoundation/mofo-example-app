@@ -1,6 +1,8 @@
 {
   "globals": {
-    "console": false
+    "console": false,
+    "module": false,
+    "require": false
   },
   "camelcase": true,
   "bitwise": true,
