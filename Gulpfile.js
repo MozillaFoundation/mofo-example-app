@@ -86,14 +86,14 @@ gulp.task('lint', function() {
   // set up jshint to make use of jshint-jsx, as we're mixing
   // plain javascript with React's JSX.
   var jshint = require('gulp-jshint');
-  var jsxhinter = require('jshint-jsx').JSXHINT;
-  var jsxhint = jshint({ jshint: jsxhinter });
+  var jsxhinter = require('jshint-jsx');
+  jsxhinter.JSHINT = jsxhinter.JSXHINT;
 
   return gulp.src([
       './lib/**/*.js',
       './react code/**/*.js*'
      ])
-    .pipe(jsxhint)
+    .pipe(jshint({ linter: 'jshint-jsx' }))
     .pipe(jshint.reporter('default'));
 });
 
