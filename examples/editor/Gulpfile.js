@@ -1,33 +1,32 @@
 var gulp = require('gulp');
-var concat = require('gulp-concat');
-var browserify = require('browserify');
-var transform = require('vinyl-transform');
-var reactify = require('reactify');
-var source = require('vinyl-source-stream');
-var less = require('gulp-less');
-var plumber = require('gulp-plumber');
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
 
-
-// Don't process react. We'll link to its CDN minified version.
-// The reasoning here is that we're not offering one app, we're
-// offering lots of apps, and bundling react with each app is
-// both bloat, and an uncachable resource. Both are bad.
-var donottouch = require('browserify-global-shim').configure({
-  'react': 'React'
-});
+// where are we running?
+var path = require("path");
+var cwd = path.dirname(__filename);
 
 /**
  * Browserify bundling of editor app.
  */
 gulp.task('bundle-editor', function() {
-  return browserify('./components/editor-app.jsx')
+  var browserify = require('browserify');
+  var transform = require('vinyl-transform');
+  var reactify = require('reactify');
+  var source = require('vinyl-source-stream');
+
+  // Don't process react. We'll link to its CDN minified version.
+  // The reasoning here is that we're not offering one app, we're
+  // offering lots of apps, and bundling react with each app is
+  // both bloat, and an uncachable resource. Both are bad.
+  var donottouch = require('browserify-global-shim').configure({
+    'react': 'React'
+  });
+
+  return browserify(cwd + '/components/editor-app.jsx')
     .transform(reactify)
     .transform(donottouch)
     .bundle()
     .pipe(source('editor-app.js'))
-    .pipe(gulp.dest('./build/'));
+    .pipe(gulp.dest(cwd + '/build/'));
 });
 
 
@@ -35,25 +34,25 @@ gulp.task('bundle-editor', function() {
  * Minify editor app
  */
 gulp.task('minify-editor', ['bundle-editor'], function() {
-  return gulp.src('./build/editor-app.js')
+  var uglify = require('gulp-uglify');
+
+  return gulp.src(cwd + '/build/editor-app.js')
     .pipe(uglify())
-    .pipe(gulp.dest('./public/javascript'));
+    .pipe(gulp.dest(cwd + '/public/javascript'));
 });
 
 
 /**
  * Javascript and JSX linting
  */
-gulp.task('lint', function() {
+gulp.task('lint-editor', function() {
   // set up jshint to make use of jshint-jsx, as we're mixing
   // plain javascript with React's JSX.
   var jshint = require('gulp-jshint');
   var jsxhinter = require('jshint-jsx');
   jsxhinter.JSHINT = jsxhinter.JSXHINT;
 
-  return gulp.src([
-      './components/**/*.js*'
-     ])
+  return gulp.src(cwd + '/components/**/*.js*')
     .pipe(jshint({ linter: 'jshint-jsx' }))
     .pipe(jshint.reporter('default'));
 });
@@ -65,6 +64,4 @@ gulp.task('lint', function() {
  * files to be written before we move on to the next task,
  * because in this case we can't run parallel tasks.
  */
-gulp.task('default', ['lint', 'minify-editor'], function() {
-  console.log("Finishing packing up.");
-});
+gulp.task('editor', ['lint-editor', 'minify-editor']);

@@ -1,6 +1,6 @@
 var React = require('react');
-var Editor = require('./components/Editor.jsx');
-var settings = require('../settings');
+var Editor = require('./Editor.jsx');
+var settings = require('../../../shared/settings');
 
 var params = (function() {
   var params = {};

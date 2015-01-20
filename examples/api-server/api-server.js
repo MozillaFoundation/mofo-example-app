@@ -9,24 +9,28 @@ var express = require("express"),
     app = express();
 
 // some housekeeping:
-app.disable('x-powered-by');
+app.disable("x-powered-by");
 app.use(bodyParser.json({ limit: "500kb" }));
 
-// We'll host gallery and editor from here, so that
-// we don't get rejected because of port shenannigans
-app.use(express.static(__dirname + '/public'));
+// We"ll host gallery and editor from here, so that
+// we don"t get rejected because of port shenannigans
+["editor", "gallery"].forEach(function(example) {
+  app.use("/" + example,
+    express.static(__dirname + "/../" + example + "/public"));
+});
 
 // make bower components universally findable by
 // pretending we have our own CDN running:
-app.use('/cdn', express.static(__dirname + '/../bower_components'));
-app.use('/cdn', express.static(__dirname + '/../node_modules'));
+app.use("/cdn", express.static(__dirname + "/../../shared/vendor"));
+app.use("/cdn", express.static(__dirname + "/../../node_modules"));
 
 // bind API routes
 routes.setup(app);
 
 // convenience redirect
-app.get('/', function(req, res) { res.redirect('/gallery'); });
+app.get("/", function(req, res) { res.redirect("/gallery"); });
 
 var server = app.listen(process.env.PORT || 55555, function() {
-  console.log('API server listening on http://localhost:%d', server.address().port);
+  console.log("API server listening on http://localhost:%d",
+    server.address().port);
 });

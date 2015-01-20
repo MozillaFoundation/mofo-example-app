@@ -1,7 +1,10 @@
 {
   "globals": {
+    "__dirname": false,
+    "__filename": false,
     "console": false,
     "module": false,
+    "process": false,
     "require": false
   },
   "camelcase": true,

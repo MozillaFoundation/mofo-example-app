@@ -1,35 +1,41 @@
 var gulp = require('gulp');
-var concat = require('gulp-concat');
-var browserify = require('browserify');
-var transform = require('vinyl-transform');
-var reactify = require('reactify');
-var source = require('vinyl-source-stream');
-var less = require('gulp-less');
-var plumber = require('gulp-plumber');
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
 
+// where are we running?
+var path = require("path");
+var cwd = path.dirname(__filename);
 
 /**
  * LESS compilation is independent of any other task
  */
 gulp.task('less', function() {
-  return gulp.src('./less/*.less')
+  var less = require('gulp-less');
+  var plumber = require('gulp-plumber');
+  var sourcemaps = require('gulp-sourcemaps');
+
+  return gulp.src(cwd + '/less/*.less')
       .pipe(plumber())
       .pipe(sourcemaps.init())
       .pipe(less())
       .pipe(sourcemaps.write())
-      .pipe(gulp.dest('./examples/editor/public/stylesheets'))
-      .pipe(gulp.dest('./examples/gallery/public/stylesheets'));
+      .pipe(gulp.dest(cwd + '/../examples/editor/public/stylesheets'))
+      .pipe(gulp.dest(cwd + '/../examples/gallery/public/stylesheets'));
 });
 
-
 /**
- * our "default" task runs everything, but -crucially- it
- * runs the subtasks in order. That means we'll wait for
- * files to be written before we move on to the next task,
- * because in this case we can't run parallel tasks.
+ * Javascript and JSX linting
  */
-gulp.task('default', ['less'], function() {
-  console.log("Finishing packing up.");
+gulp.task('lint', function() {
+  // set up jshint to make use of jshint-jsx, as we're mixing
+  // plain javascript with React's JSX.
+  var jshint = require('gulp-jshint');
+  var jsxhinter = require('jshint-jsx');
+  jsxhinter.JSHINT = jsxhinter.JSXHINT;
+
+  return gulp.src([
+      cwd + '/components/**/*.jsx',
+      cwd + '/lib/**/*.js',
+      cwd + '/mixins/**/*.js*'
+     ])
+    .pipe(jshint({ linter: 'jshint-jsx' }))
+    .pipe(jshint.reporter('default'));
 });
