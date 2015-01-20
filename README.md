@@ -14,7 +14,7 @@ Clone this repo, then run `npm install` to get everything set up.
 
 To perform a build for the current implementation, run `gulp`.
 
-To test the current implementation, run `node apps/api-server` and
+To test the current implementation, run `node examples/api-server/api-server` and
 point your browser at http://localhost:55555
 
 ## Current implementation details
@@ -24,8 +24,8 @@ roles. Applications used are:
 
 ### 1) An API server
 
-  The API server lives in the `apps` directory, and is a mock
-  implementation right now, servicing three API endpoints.
+  The API server lives in the `./examples/api-servers` directory, and is a
+  mock implementation right now, servicing three API endpoints.
 
 There are two GET endpoints:
 
@@ -48,10 +48,9 @@ yet, nor is the choice of server libraries/technology finalised.
 ### 2) A gallery app
 
 The gallery app is a React UI application, with its root component
-defined in `react code/gallery-app.jsx`. To find all the components
-it relies on, follow the trail of `require` calls to the relevant
-bits and pieces, although most will be in the `components/gallery`
-directory.
+defined in `./examples/gallery/components/gallery-app.jsx`. To find
+all the components it relies on, follow the trail of `require` calls
+to the relevant bits and pieces, some of which is in `./shared`.
 
 The gallery app as a running app in the browser has zero server
 side components: the app simply makes use of the API server to
@@ -70,10 +69,9 @@ the make editor, which is app three
 ### 3) An editor app
 
 The editor app is a React UI application, with its root component
-defined in `react code/editor-app.jsx`. To find all the components
-it relies on, follow the trail of `require` calls to the relevant
-bits and pieces, although most will be in the `components/editor`
-directory.
+defined in `./examples/editor/components/editor-app.jsx`. To find
+all the components it relies on, follow the trail of `require` calls
+to the relevant bits and pieces, some of which is in `./shared`.
 
 The editor uses the API server to load individual makes in an
 editable way, with the static view offering an "edit" button,
