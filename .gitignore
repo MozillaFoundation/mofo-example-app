@@ -26,7 +26,7 @@ build/Release
 node_modules
 
 # Client-side dependency directory
-bower_components
+shared/vendor
 
 # Users Environment Variables
 .lock-wscript

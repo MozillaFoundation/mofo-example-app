@@ -1,4 +1,4 @@
-var L10N = require("./../../lib/L10N");
+var L10N = require("../lib/L10N");
 
 var LocaleEventName = "locale-change";
 

@@ -1,4 +1,4 @@
-var makes = require("./demodata");
+var makes = require("../data/demodata");
 
 module.exports = {
 

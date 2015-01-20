@@ -1,4 +1,4 @@
-var API = require("./API");
+var API = require("../lib/API");
 var version = "1.0";
 var apiroute = "/api/" + version + "/";
 
