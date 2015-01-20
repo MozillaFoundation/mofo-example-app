@@ -15,7 +15,7 @@ Clone this repo, then run `npm install` to get everything set up.
 To perform a build for the current implementation, run `gulp`.
 
 To test the current implementation, run `node examples/api-server/api-server` and
-point your browser at http://localhost:55555
+point your browser at [http://localhost:55555](http://localhost:55555)
 
 ## Current implementation details
 
