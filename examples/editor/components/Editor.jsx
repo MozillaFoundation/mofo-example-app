@@ -1,6 +1,6 @@
 var React = require("react");
-var WebmakerLoginUX = require("./webmaker-login-ux/WebmakerLoginUX.jsx");
-var MakeEditor = require("./editor/MakeEditor.jsx");
+var WebmakerLoginUX = require("../../shared/components/webmaker-login-ux/WebmakerLoginUX.jsx");
+var MakeEditor = require("./MakeEditor.jsx");
 
 var Editor = React.createClass({
 

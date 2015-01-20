@@ -1,7 +1,7 @@
 var React = require("react");
 var request = require("superagent");
-var I18N = require("../../mixins/I18N");
-var Make = require("../../mixins/Make");
+var I18N = require("../../shared/mixins/I18N");
+var Make = require("../../shared/mixins/Make");
 
 var MakeEditor = React.createClass({
 
