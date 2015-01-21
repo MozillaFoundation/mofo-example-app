@@ -17,6 +17,12 @@ To perform a build for the current implementation, run `gulp`.
 To test the current implementation, run `node examples/api-server/api-server` and
 point your browser at [http://localhost:55555](http://localhost:55555)
 
+For live reload functionality, you can run `gulp watch` to keep an
+eye out for changes to .less and .jsx files, which will kick off a
+rebuild. Paired with running `live-server` or a similar auto-reloading
+server process in the editor and gallery `public` directories will
+then give you an automatically rebuilding and reloading dev environment.
+
 ## Current implementation details
 
 This repo currently implements three applications, performing different
