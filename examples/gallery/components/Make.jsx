@@ -29,17 +29,18 @@ var Make = React.createClass({
     return (
       <div className="make component">
         <div>
-          <span className="label">{this.state.strings.name}</span>:
-          {this.state.make.name}
+          <span className="label">{this.state.strings.name}</span>
+          : {this.state.make.name}
         </div>
         <div>
-          <span className="label">{this.state.strings.author}</span>:
-          {this.state.make.author}
+          <span className="label">{this.state.strings.author}</span>
+          : {this.state.make.author}
         </div>
         <div>
-          <span className="label">{this.state.strings.likes}</span>:
-          {this.state.make.likes}
-          <span className="likes" onClick={this.like}> ♡ </span>
+          <span className="label">{this.state.strings.likes}</span>
+          : {this.state.make.likes}
+           <button className="btn btn-default likes"
+                   onClick={this.like}>♡</button>
         </div>
         <div>
           <span className="label">{this.state.strings.published}</span>:
