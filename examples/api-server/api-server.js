@@ -12,11 +12,12 @@ var express = require("express"),
 app.disable("x-powered-by");
 app.use(bodyParser.json({ limit: "500kb" }));
 
-// We"ll host gallery and editor from here, so that
-// we don"t get rejected because of port shenannigans
-["editor", "gallery"].forEach(function(example) {
-  app.use("/" + example,
-    express.static(__dirname + "/../" + example + "/public"));
+// let"s make sure to get CORS out of the way here
+app.all("*", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
 });
 
 // make bower components universally findable by

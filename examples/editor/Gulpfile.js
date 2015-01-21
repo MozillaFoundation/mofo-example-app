@@ -1,8 +1,10 @@
 var gulp = require('gulp');
+var watch = require('gulp-watch');
 
 // where are we running?
 var path = require("path");
 var cwd = path.dirname(__filename);
+
 
 /**
  * Browserify bundling of editor app.
@@ -42,6 +44,10 @@ gulp.task('minify-editor', ['bundle-editor'], function() {
 });
 
 
+// used in both the lint and watch tasks
+var jsxSrc = cwd + '/components/**/*.js*';
+
+
 /**
  * Javascript and JSX linting
  */
@@ -52,7 +58,7 @@ gulp.task('lint-editor', function() {
   var jsxhinter = require('jshint-jsx');
   jsxhinter.JSHINT = jsxhinter.JSXHINT;
 
-  return gulp.src(cwd + '/components/**/*.js*')
+  return gulp.src(jsxSrc)
     .pipe(jshint({ linter: 'jshint-jsx' }))
     .pipe(jshint.reporter('default'));
 });
@@ -65,3 +71,12 @@ gulp.task('lint-editor', function() {
  * because in this case we can't run parallel tasks.
  */
 gulp.task('editor', ['lint-editor', 'minify-editor']);
+
+
+/**
+ * Automatic rebuilding when .jsx files are changed
+ */
+gulp.task('watch-editor', function() {
+  watch(jsxSrc, function() { gulp.start('lint-editor'); });
+  watch(jsxSrc, function() { gulp.start('minify-editor'); });
+});

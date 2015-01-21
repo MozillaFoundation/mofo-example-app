@@ -1,17 +1,10 @@
 var gulp = require('gulp');
+var watch = require('gulp-watch');
 
 // where are we running?
 var path = require("path");
 var cwd = path.dirname(__filename);
 
-
-// Don't process react. We'll link to its CDN minified version.
-// The reasoning here is that we're not offering one app, we're
-// offering lots of apps, and bundling react with each app is
-// both bloat, and an uncachable resource. Both are bad.
-var donottouch = require('browserify-global-shim').configure({
-  'react': 'React'
-});
 
 /**
  * Browserify bundling of gallery app.
@@ -51,6 +44,10 @@ gulp.task('minify-gallery', ['bundle-gallery'], function() {
 });
 
 
+// used in both the lint and watch tasks
+var jsxSrc = cwd + '/components/**/*.js*';
+
+
 /**
  * Javascript and JSX linting
  */
@@ -61,7 +58,7 @@ gulp.task('lint-gallery', function() {
   var jsxhinter = require('jshint-jsx');
   jsxhinter.JSHINT = jsxhinter.JSXHINT;
 
-  return gulp.src(cwd + '/components/**/*.js*')
+  return gulp.src(jsxSrc)
     .pipe(jshint({ linter: 'jshint-jsx' }))
     .pipe(jshint.reporter('default'));
 });
@@ -74,3 +71,12 @@ gulp.task('lint-gallery', function() {
  * because in this case we can't run parallel tasks.
  */
 gulp.task('gallery', ['lint-gallery', 'minify-gallery']);
+
+
+/**
+ * Automatic rebuilding when .jsx files are changed
+ */
+gulp.task('watch-gallery', function() {
+  watch(jsxSrc, function() { gulp.start('lint-gallery'); });
+  watch(jsxSrc, function() { gulp.start('minify-gallery'); });
+});
