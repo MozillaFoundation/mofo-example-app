@@ -17,11 +17,32 @@ To perform a build for the current implementation, run `gulp`.
 To test the current implementation, run `node examples/api-server/api-server` and
 point your browser at [http://localhost:55555](http://localhost:55555)
 
-For live reload functionality, you can run `gulp watch` to keep an
-eye out for changes to .less and .jsx files, which will kick off a
-rebuild. Paired with running `live-server` or a similar auto-reloading
-server process in the editor and gallery `public` directories will
-then give you an automatically rebuilding and reloading dev environment.
+### Development with live reloading
+
+For a tight feedback loop between code changes and updates in the browser, the
+code uses `gulp` for compilation and `gulp watch` for looking for file changes
+that will kick off recompiles.
+
+The current live reloading dev setup consists of:
+
+- general first build: `$> gulp`.
+- watch all the things: `$> gulp watch`.
+- new terminal, start the api-server: `$> node examples/api-server/api-server`.
+- new terminal, directory your way in the gallery (`$> cd examples/gallery/public`) and start a `live-server`.
+- new terminal, directory your way in the editor (`$> cd examples/editor/public`) and start a `live-server`.
+
+Editing any .less or .jsx code should result in live recompiles, with the browser
+automatically updating thanks to the magic of live-server's use of websockets.
+
+
+For finer grained control, the following dedicated watch tasks are available:
+
+- `gulp watch-gallery` watches only changes rooted in the `examples/gallery' directory.
+- `gulp watch-editor` watches only changes rooted in the `examples/editor' directory.
+- `gulp watch-shared` watches only changes rooted in the `shared' directory.
+  - `gulp watch-less` watches only changes rooted in the `shared/less' directory.
+  - `gulp watch-lint` watches only changes for `*.js*` rooted in the `shared` directory.
+
 
 ## Current implementation details
 
