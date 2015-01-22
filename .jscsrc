@@ -1,0 +1,12 @@
+{
+  "disallowAnonymousFunctions": true,
+  "disallowDanglingUnderscores": true,
+  "disallowEmptyBlocks": true,
+  "disallowMixedSpacesAndTabs": true,
+  "disallowMultipleLineStrings": true,
+  "disallowNewlineBeforeBlockStatements": true,
+  "disallowOperatorBeforeLineBreak": true,
+  "disallowPaddingNewlinesBeforeKeywords": true,
+  "disallowPaddingNewlinesInBlocks": true,
+  "validateQuoteMarks": true
+}

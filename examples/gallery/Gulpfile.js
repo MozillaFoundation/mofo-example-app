@@ -65,12 +65,23 @@ gulp.task('lint-gallery', function() {
 
 
 /**
+ * JavaScript style validation, using JSCS
+ */
+gulp.task('jscs-gallery', function() {
+  var jsxcs = require("gulp-jsxcs");
+  return gulp.src("component/**/*.jsx")
+    .pipe(jsxcs())
+    .pipe(process.stdout);
+});
+
+
+/**
  * our "default" task runs everything, but -crucially- it
  * runs the subtasks in order. That means we'll wait for
  * files to be written before we move on to the next task,
  * because in this case we can't run parallel tasks.
  */
-gulp.task('gallery', ['lint-gallery', 'minify-gallery']);
+gulp.task('gallery', ['lint-gallery', 'jscs-gallery', 'minify-gallery']);
 
 
 /**

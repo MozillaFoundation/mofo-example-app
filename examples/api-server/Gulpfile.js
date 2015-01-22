@@ -14,3 +14,15 @@ gulp.task("lint-api", function() {
     .pipe(jshint())
     .pipe(jshint.reporter("default"));
 });
+
+/**
+ * JavaScript style validation, using JSCS
+ */
+gulp.task("jscs-api", function() {
+  var jsxcs = require("gulp-jsxcs");
+  return gulp.src("**/*.js*")
+    .pipe(jsxcs())
+    .pipe(process.stdout);
+});
+
+
