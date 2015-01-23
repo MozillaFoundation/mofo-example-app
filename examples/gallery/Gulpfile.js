@@ -84,6 +84,13 @@ gulp.task('jscs-gallery', function() {
 gulp.task('gallery', ['lint-gallery', 'jscs-gallery', 'minify-gallery']);
 
 
+gulp.task('run-gallery', function() {
+  var liveServer = require("live-server");
+  var dir = cwd + "/public";
+  var suppressBrowser = false;
+  liveServer.start(55556, dir, suppressBrowser);
+});
+
 /**
  * Automatic rebuilding when .jsx files are changed
  */

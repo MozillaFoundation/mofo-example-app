@@ -83,6 +83,12 @@ gulp.task('jscs-editor', function() {
 gulp.task('editor', ['lint-editor', 'jscs-editor', 'minify-editor']);
 
 
+gulp.task('run-editor', function() {
+  var liveServer = require("live-server");
+  var suppressBrowser = true;
+  liveServer.start(55558, cwd, suppressBrowser);
+});
+
 /**
  * Automatic rebuilding when .jsx files are changed
  */
