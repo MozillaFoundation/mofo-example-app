@@ -10,7 +10,10 @@ var cwd = path.dirname(__filename);
 gulp.task("lint-api", function() {
   var jshint = require("gulp-jshint");
   return gulp.src(cwd + "/**/*.js")
-    .pipe(jshint())
+    .pipe(jshint({
+      linter: "jshint-jsx",
+      esnext: true
+    }))
     .pipe(jshint.reporter("default"));
 });
 

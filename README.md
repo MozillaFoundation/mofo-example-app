@@ -20,21 +20,17 @@ For a tight feedback loop between code changes and updates in the browser, the
 code uses `gulp` for compilation and `gulp watch` for looking for file changes
 that will kick off recompiles.
 
-The current live reloading dev setup consists of:
-
-- general first build: `$> gulp`.
-- watch all the things: `$> gulp watch`.
-
-The watch task runs the api-server, as well as the gallery (automatically
-opening the site in the browser) and the editor (not autoamtically opening
-in the browser).
+If you just want to compile run `$> gulp`. For convenient dev work, you can
+use `$> gulp watch` instead, which will run the build tasks as well as set
+up file change watching on the app and shared directories, automatically
+starting up a live-reloading server for the gallery/editor apps.
 
 Editing any .less or .jsx code should result in live recompiles, with the browser
 automatically updating thanks to the magic of live-server's use of websockets.
 
-
 For finer grained control, the following dedicated watch tasks are available:
 
+- `gulp watch-only` does not run the initial compile, but only enters watch mode.
 - `gulp watch-gallery` watches only changes rooted in the `examples/gallery' directory.
 - `gulp watch-editor` watches only changes rooted in the `examples/editor' directory.
 - `gulp watch-shared` watches only changes rooted in the `shared' directory.

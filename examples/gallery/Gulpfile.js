@@ -5,7 +5,6 @@ var watch = require('gulp-watch');
 var path = require("path");
 var cwd = path.dirname(__filename);
 
-
 /**
  * Browserify bundling of gallery app.
  */
@@ -13,6 +12,7 @@ gulp.task('bundle-gallery', function() {
   var browserify = require('browserify');
   var transform = require('vinyl-transform');
   var reactify = require('reactify');
+  var to5ify = require("6to5ify");
   var source = require('vinyl-source-stream');
 
   // Don't process react. We'll link to its CDN minified version.
@@ -24,6 +24,7 @@ gulp.task('bundle-gallery', function() {
   });
 
   return browserify(cwd + '/components/gallery-app.jsx')
+    .transform(to5ify)
     .transform(reactify)
     .transform(donottouch)
     .bundle()
@@ -59,7 +60,10 @@ gulp.task('lint-gallery', function() {
   jsxhinter.JSHINT = jsxhinter.JSXHINT;
 
   return gulp.src(jsxSrc)
-    .pipe(jshint({ linter: 'jshint-jsx' }))
+    .pipe(jshint({
+      linter: 'jshint-jsx',
+      esnext: true
+    }))
     .pipe(jshint.reporter('default'));
 });
 
