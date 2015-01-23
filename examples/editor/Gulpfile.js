@@ -5,7 +5,6 @@ var watch = require('gulp-watch');
 var path = require("path");
 var cwd = path.dirname(__filename);
 
-
 /**
  * Browserify bundling of editor app.
  */
@@ -65,13 +64,30 @@ gulp.task('lint-editor', function() {
 
 
 /**
+ * JavaScript style validation, using JSCS
+ */
+gulp.task('jscs-editor', function() {
+  var jsxcs = require("gulp-jsxcs");
+  return gulp.src("component/**/*.jsx")
+    .pipe(jsxcs())
+    .pipe(process.stdout);
+});
+
+
+/**
  * our "default" task runs everything, but -crucially- it
  * runs the subtasks in order. That means we'll wait for
  * files to be written before we move on to the next task,
  * because in this case we can't run parallel tasks.
  */
-gulp.task('editor', ['lint-editor', 'minify-editor']);
+gulp.task('editor', ['lint-editor', 'jscs-editor', 'minify-editor']);
 
+
+gulp.task('run-editor', function() {
+  var liveServer = require("live-server");
+  var suppressBrowser = true;
+  liveServer.start(55558, cwd, suppressBrowser);
+});
 
 /**
  * Automatic rebuilding when .jsx files are changed

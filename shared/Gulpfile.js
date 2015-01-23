@@ -49,6 +49,17 @@ gulp.task('lint', function() {
 
 
 /**
+ * JavaScript style validation, using JSCS
+ */
+gulp.task('jscs', function() {
+  var jsxcs = require("gulp-jsxcs");
+  return gulp.src("component/**/*.jsx")
+    .pipe(jsxcs())
+    .pipe(process.stdout);
+});
+
+
+/**
  * Watcher task for recompiling less when necessary
  */
 gulp.task('watch-less', function() {
