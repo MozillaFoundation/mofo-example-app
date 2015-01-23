@@ -1,4 +1,6 @@
-Clone this repository if you're starting a new MoFo application.
+# The  Mozilla Foundation Client-Side Prototype 
+
+Clone this repository if you're starting a new MoFo client-side application.
 
 The repo contains all the technologies we talk about in the [MoFo Engineering Handbook](https://github.com/MozillaFoundation/MoFo-Engineering-Handbook)
 and contains an example application that you can use as springboard
