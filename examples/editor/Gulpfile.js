@@ -12,6 +12,7 @@ gulp.task('bundle-editor', function() {
   var browserify = require('browserify');
   var transform = require('vinyl-transform');
   var reactify = require('reactify');
+  var to5ify = require("6to5ify");
   var source = require('vinyl-source-stream');
 
   // Don't process react. We'll link to its CDN minified version.
@@ -23,6 +24,7 @@ gulp.task('bundle-editor', function() {
   });
 
   return browserify(cwd + '/components/editor-app.jsx')
+    .transform(to5ify)
     .transform(reactify)
     .transform(donottouch)
     .bundle()
@@ -58,7 +60,10 @@ gulp.task('lint-editor', function() {
   jsxhinter.JSHINT = jsxhinter.JSXHINT;
 
   return gulp.src(jsxSrc)
-    .pipe(jshint({ linter: 'jshint-jsx' }))
+    .pipe(jshint({
+      linter: 'jshint-jsx',
+      esnext: true
+    }))
     .pipe(jshint.reporter('default'));
 });
 
