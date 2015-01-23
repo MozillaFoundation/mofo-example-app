@@ -27,9 +27,10 @@ The current live reloading dev setup consists of:
 
 - general first build: `$> gulp`.
 - watch all the things: `$> gulp watch`.
-- new terminal, start the api-server: `$> node examples/api-server/api-server`.
-- new terminal, directory your way in the gallery (`$> cd examples/gallery/public`) and start a `live-server`.
-- new terminal, directory your way in the editor (`$> cd examples/editor/public`) and start a `live-server`.
+
+The watch task runs the api-server, as well as the gallery (automatically
+opening the site in the browser) and the editor (not autoamtically opening
+in the browser).
 
 Editing any .less or .jsx code should result in live recompiles, with the browser
 automatically updating thanks to the magic of live-server's use of websockets.
