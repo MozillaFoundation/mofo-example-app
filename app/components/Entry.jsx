@@ -1,13 +1,8 @@
 var React = require("react");
-var I18N = require("./../../../shared/mixins/I18N");
-var MakeMixin = require("./../../../shared/mixins/Make");
 
-var Make = React.createClass({
+var Entry = React.createClass({
 
-  mixins: [
-    I18N,
-    MakeMixin
-  ],
+  mixins: [],
 
   getInitialState: function() {
     return {
@@ -53,4 +48,4 @@ var Make = React.createClass({
 
 });
 
-module.exports = Make;
+module.exports = Entry;

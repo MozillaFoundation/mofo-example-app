@@ -1,9 +1,0 @@
-{
-  "name": "mofo-example-app",
-  "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "makerstrap": "~0.2.7",
-    "webmaker-login-ux": "mozilla/webmaker-login-ux#~1.3.5"
-  }
-}
