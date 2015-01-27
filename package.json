@@ -16,18 +16,15 @@
     "url": "http://github.com/mozillafoundation/mofo-example-app"
   },
   "scripts": {
-    "postinstall": "bower install && gulp",
+    "postinstall": "gulp",
     "test": "gulp test",
     "build": "gulp"
   },
   "dependencies": {
     "6to5ify": "^3.1.2",
-    "body-parser": "^1.10.1",
-    "bower": "^1.3.12",
     "browserify": "^8.1.0",
     "browserify-global-shim": "^1.0.0",
     "es6": "0.0.7",
-    "express": "^4.11.0",
     "gulp": "^3.8.10",
     "gulp-concat": "^2.4.3",
     "gulp-express": "^0.1.7",
@@ -40,14 +37,14 @@
     "gulp-watch": "^3.0.0",
     "jshint-jsx": "^0.4.0",
     "live-server": "^0.6.3",
-    "nunjucks": "^1.1.0",
-    "open": "0.0.5",
-    "page": "^1.5.0",
+    "makerstrap": "git://github.com/mozilla/makerstrap#v0.2.7",
     "react": "^0.12.2",
+    "react-onclickoutside": "^0.2.0",
     "reactify": "^0.17.1",
-    "request": "^2.51.0",
     "superagent": "^0.21.0",
     "vinyl-source-stream": "^1.0.0",
-    "vinyl-transform": "^1.0.0"
+    "vinyl-transform": "^1.0.0",
+    "webmaker-auth": "1.0.2",
+    "webmaker-login-ux": "git://github.com/mozilla/webmaker-login-ux#master"
   }
 }
