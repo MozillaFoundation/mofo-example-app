@@ -20,6 +20,6 @@ Editing any .less or .jsx code should result in live recompiles, with the browse
 
 ## Current implementation details
 
-This repo currently implements a single client-side applications, consuming data from file, rather than from an API endpoint.
+This repo currently implements a single client-side applications, consuming data from file, rather than from an API endpoint. Its code is found in the `app` directory, with most subdirectories named intuitively. The actual "deploy" content gets written to the `app/public` directory. As the app is built using [React](http://facebook.github.io/react) most of the important code can be found in the `components` and `mixins` directories.
 
 If the [Webmaker Login service](http://github.com/mozilla/login.webmaker.org) is running (on port 3000), webmaker login is used to control whether or not "tiles" have editable titles and author fields.
