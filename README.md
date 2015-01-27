@@ -33,5 +33,5 @@ automatically updating thanks to the magic of live-server's use of websockets.
 This repo currently implements a single client-side applications, consuming
 data from file, rather than from an API endpoint.
 
-If the [Webmaker Login service](http://github.com/mozilla/login.webmaker.org] is running, webmaker login is used to control
+If the [Webmaker Login service](http://github.com/mozilla/login.webmaker.org) is running, webmaker login is used to control
 whether or not "tiles" have editable titles and author fields.
