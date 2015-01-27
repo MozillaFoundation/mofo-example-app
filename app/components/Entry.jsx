@@ -1,8 +1,12 @@
 var React = require("react");
+var LabeledField = require("./LabeledField.jsx");
 
 var Entry = React.createClass({
 
-  mixins: [],
+  mixins: [
+    require("../mixins/I18N"),
+    require("../mixins/Entry")
+  ],
 
   getInitialState: function() {
     return {
@@ -14,29 +18,33 @@ var Entry = React.createClass({
         published: "Published",
         view: "Click to open make"
       },
-      make: {}
+      entry: this.props.data
     };
   },
 
   render: function() {
-    var created = this.localizeDate(this.state.make.created);
-    var makehref = this.props.editor + "/?make=" + this.state.make.id;
+    var created = this.localizeDate(this.state.entry.created);
+    var makehref = this.props.editor + "/?make=" + this.state.entry.id;
     return (
       <div className="make component">
+
+        <LabeledField editable={this.props.loggedIn}
+                      onUpdate={this.setName}
+                      label={this.state.strings.name}
+                      value={this.state.entry.name} />
+
+        <LabeledField editable={this.props.loggedIn}
+                      onUpdate={this.setAuthor}
+                      label={this.state.strings.author}
+                      value={this.state.entry.author} />
+
         <div>
-          <span className="label">{this.state.strings.name}</span>
-          : {this.state.make.name}
+          <span className="label">{this.state.strings.likes}</span>:
+          {this.state.entry.likes}
+          <button className="btn btn-default likes"
+                  onClick={this.like}>♡</button>
         </div>
-        <div>
-          <span className="label">{this.state.strings.author}</span>
-          : {this.state.make.author}
-        </div>
-        <div>
-          <span className="label">{this.state.strings.likes}</span>
-          : {this.state.make.likes}
-           <button className="btn btn-default likes"
-                   onClick={this.like}>♡</button>
-        </div>
+
         <div>
           <span className="label">{this.state.strings.published}</span>:
           {created}

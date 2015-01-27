@@ -32,7 +32,11 @@ var MakeGrid = React.createClass({
   buildGrid: function() {
     var list = this.state.list;
     return list.map(entry => {
-      return <Entry data={entry} key={entry.id}/>;
+      return (
+        <Entry data={entry}
+               key={entry.id}
+               loggedIn={this.props.loggedIn}/>
+      );
     });
   }
 

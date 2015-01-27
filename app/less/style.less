@@ -1,0 +1,61 @@
+@import (css) url('http://code.cdn.mozilla.net/fonts/fira.css');
+@import (less) '../../node_modules/makerstrap/dist/makerstrap.complete.min.css';
+
+.component {
+  background: white;
+
+  &.header {
+    height: 10vh;
+    line-height: 10vh;
+
+    .locale-picker, .webmaker-login-ux {
+      position: absolute;
+      top: calc(5vh - 1.25em);
+    }
+
+    .locale-picker {
+      right: 10em;
+    }
+
+    .webmaker-login-ux {
+      right: 2em;
+    }
+  }
+
+  &.make-gallery {
+
+    text-align: center;
+    height: 90vh;
+    overflow-y: scroll;
+
+    .make {
+      display: inline-block;
+      width: calc(25vw - 2.5em);
+      margin: 1em;
+    }
+  }
+
+  &.logo {
+    width: 100px;
+    height: 40px;
+  }
+
+  &.make {
+   .label {
+     color: black;
+     font-weight: bold;
+   }
+   .likes {
+     width: 1.5em;
+     height: 1.5em;
+     line-height: 0em;
+     margin: 0 0.25em;
+     padding: 0.25em;
+
+     &:hover {
+       color: red;
+     }
+   }
+  }
+}
+

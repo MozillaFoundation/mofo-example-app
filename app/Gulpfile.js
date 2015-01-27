@@ -1,10 +1,15 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
+var sourcemaps = require('gulp-sourcemaps');
 
 // where are we running?
 var path = require("path");
 var cwd = path.dirname(__filename);
-var jsxSrc = cwd + '/components/**/*.js*';
+var jsxSrc = [
+  cwd + '/components/**/*.js*',
+  cwd + '/lib/**/*.js',
+  cwd + '/mixins/**/*.js'
+];
 var lessSrc = cwd + '/less/*.less';
 
 /**
@@ -17,15 +22,10 @@ gulp.task('bundle-app', function() {
   var to5ify = require("6to5ify");
   var source = require('vinyl-source-stream');
 
-  /*
-    // Don't process react. We'll link to its CDN minified version.
-    // The reasoning here is that we're not offering one app, we're
-    // offering lots of apps, and bundling react with each app is
-    // both bloat, and an uncachable resource. Both are bad.
-    var donottouch = require('browserify-global-shim').configure({
-      'react': 'React'
-    });
-  */
+  // Make sure we point to the dist/react.min.js version of react
+  var donottouch = require('browserify-global-shim').configure({
+    'react': 'require("react/dist/react.min")'
+  });
 
   return browserify(cwd + '/components/app.jsx')
     .transform(to5ify)
@@ -44,7 +44,9 @@ gulp.task('minify-app', ['bundle-app'], function() {
   var uglify = require('gulp-uglify');
 
   return gulp.src(cwd + '/build/app.js')
+    .pipe(sourcemaps.init())
     .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(cwd + '/public/javascript'));
 });
 
@@ -85,7 +87,6 @@ gulp.task('jscs-app', function() {
 gulp.task('less-app', function() {
   var less = require('gulp-less');
   var plumber = require('gulp-plumber');
-  var sourcemaps = require('gulp-sourcemaps');
 
   return gulp.src(lessSrc)
       .pipe(plumber())
@@ -112,7 +113,7 @@ gulp.task('run-app', function() {
   var liveServer = require("live-server");
   var dir = cwd + "/public";
   var suppressBrowser = false;
-  liveServer.start(55556, dir, suppressBrowser);
+  liveServer.start(8080, dir, suppressBrowser);
 });
 
 
