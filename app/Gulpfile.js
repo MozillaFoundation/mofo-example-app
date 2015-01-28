@@ -5,11 +5,20 @@ var sourcemaps = require('gulp-sourcemaps');
 // where are we running?
 var path = require("path");
 var cwd = path.dirname(__filename);
+
+// the various source files
 var jsxSrc = [
   cwd + '/components/**/*.js*',
   cwd + '/lib/**/*.js',
   cwd + '/mixins/**/*.js'
 ];
+
+var jscsSrc = [
+  cwd + '/components/**/*.js*',
+  cwd + '/lib/**/*.js',
+  cwd + '/mixins/**/*.js'
+];
+
 var lessSrc = cwd + '/less/*.less';
 
 /**
@@ -75,9 +84,9 @@ gulp.task('lint-app', function() {
  */
 gulp.task('jscs-app', function() {
   var jsxcs = require("gulp-jsxcs");
-  return gulp.src("component/**/*.jsx")
-    .pipe(jsxcs())
-    .pipe(process.stdout);
+  var jshint = require('gulp-jshint');
+  return gulp.src(jscsSrc)
+    .pipe(jsxcs());
 });
 
 

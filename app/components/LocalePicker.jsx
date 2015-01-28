@@ -15,12 +15,13 @@ var LocalePicker = React.createClass({
 
   render: function() {
     var strings = this.state.strings;
-    var locales = Object.keys(this.state.strings).map(function(localeName) {
+    var generator = function(localeName) {
       return (
         <option value={localeName}
                 key={localeName}>{strings[localeName]}</option>
       );
-    });
+    };
+    var locales = Object.keys(this.state.strings).map(generator);
     var props = {
       className: "locale-picker component btn btn-default",
       value: this.state.locale,

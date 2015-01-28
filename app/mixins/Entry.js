@@ -20,14 +20,14 @@ module.exports = {
   },
 
   setName: function(newname) {
-    if(newname) {
+    if (newname) {
       this.entry.name = newname;
       this.update();
     }
   },
 
   setAuthor: function(newauthor) {
-    if(newauthor) {
+    if (newauthor) {
       this.entry.author = newauthor;
       this.update();
     }

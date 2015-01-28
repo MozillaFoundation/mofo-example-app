@@ -14,7 +14,7 @@ var LabeledField = React.createClass({
   },
 
   handleClickOutside: function(evt) {
-    if(this.state.editing===false) {
+    if (this.state.editing === false) {
       return;
     }
 
@@ -38,7 +38,7 @@ var LabeledField = React.createClass({
   },
 
   showValue: function() {
-    if(!this.state.editing) {
+    if (!this.state.editing) {
       return (
         <span className="value"
               onClick={this.toggle}>{this.state.value}</span>
@@ -52,7 +52,7 @@ var LabeledField = React.createClass({
   },
 
   toggle: function() {
-    if(!this.props.editable) {
+    if (!this.props.editable) {
       return;
     }
 

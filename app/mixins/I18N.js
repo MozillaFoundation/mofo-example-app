@@ -2,7 +2,7 @@ var L10N = require("../lib/L10N");
 
 var LocaleEventName = "locale-change";
 
-// this mixing handles localisation of any and all components,
+// This mixing handles localisation of any and all components,
 // by binding the localisation to when the component is mounted.
 module.exports = {
 
@@ -14,12 +14,12 @@ module.exports = {
     return L10N.locales;
   },
 
-  // localise all "strings" in a component's state
+  // Localise all "strings" in a component's state
   componentDidMount: function() {
-    // cache the original strings
+    // Cache the original strings
     this._stringCache = this.state.strings;
 
-    // which locale are we in?
+    // Which locale are we in?
     L10N.setLocale(this.state.locale);
     this.updateLocaleStrings(this.state.locale);
 
@@ -52,7 +52,7 @@ module.exports = {
 
   triggerLocaleChange: function(locale) {
     L10N.setLocale(locale);
-    var data = {detail: { locale: locale }};
+    var data = { detail: { locale: locale }};
     var evt = new CustomEvent(LocaleEventName, data);
     document.dispatchEvent(evt);
   }

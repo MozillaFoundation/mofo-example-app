@@ -33,9 +33,10 @@ var L10N = {
 
   localizeAll: function(map) {
     var mapped = {};
-    Object.keys(map).forEach(function(key) {
+    var localize = function(key) {
       mapped[key] = L10N.localize(map[key]);
-    });
+    };
+    Object.keys(map).forEach(localize);
     return mapped;
   }
 };

@@ -1,15 +1,19 @@
 {
-  "disallowAnonymousFunctions": true,
-  "disallowDanglingUnderscores": true,
+  "esnext": true,
   "disallowEmptyBlocks": true,
   "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineStrings": true,
   "disallowNewlineBeforeBlockStatements": true,
-  "disallowOperatorBeforeLineBreak": true,
-  "disallowPaddingNewlinesBeforeKeywords": true,
   "disallowPaddingNewlinesInBlocks": true,
   "disallowSpaceBeforePostfixUnaryOperators": true,
   "disallowSpacesInCallExpression": true,
+
+  "disallowSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true
+  },
+  "disallowSpacesInFunctionDeclaration": {
+    "beforeOpeningRoundBrace": true
+  },
   "disallowSpacesInFunctionExpression": {
     "beforeOpeningRoundBrace": true
   },
@@ -29,7 +33,20 @@
   "requireLineBreakAfterVariableAssignment": true,
   "requireLineFeedAtFileEnd": true,
   "requireParenthesesAroundIIFE": true,
-  "requireSpaceAfterKeywords": true,
+  "requireSpaceAfterKeywords": [
+    "do",
+    "for",
+    "if",
+    "else",
+    "switch",
+    "case",
+    "try",
+    "catch",
+    "while",
+    "with",
+    "return",
+    "typeof"
+  ],
   "requireSpaceAfterLineComment": true,
   "requireSpaceBeforeBinaryOperators": true,
   "requireSpaceBeforeBlockStatements": true,
