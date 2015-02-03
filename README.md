@@ -8,7 +8,7 @@ The repo contains all the technologies we talk about in the [MoFo Engineering Ha
 
 ## Using the current implementation
 
-Clone this repo, then run `npm install` to get everything set up.
+Clone this repo, then run `npm install` to get everything set up. The build steps, and consequently development, rely on `node` being available on the system.
 
 ## Development with live reloading
 
