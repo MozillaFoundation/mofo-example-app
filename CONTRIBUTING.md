@@ -46,3 +46,8 @@ Any patch should be tested in as many of our [supported browsers](#TODO-SUPPORTE
 - Try not to pollute your pull request with unintended changes – keep them simple and small. If possible, squash your commits.
 - Try to share which browsers and devices your code has been tested in before submitting a pull request.
 - If your PR resolves an issue, include **closes #ISSUE_NUMBER** in your commit message (or a [synonym](https://help.github.com/articles/closing-issues-via-commit-messages)).
+
+## Instrumentation (Metrics)
+
+- We use Google Analytics Event Tracking to measure user interactions we are interested in understanding. An example of how to do this can be seen in `app/components/LabeledField.jsx` and `app/mixins/Entry.js`.
+- Google Analytics account ID is set in `app/public/index.html`
