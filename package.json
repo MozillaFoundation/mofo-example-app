@@ -44,6 +44,7 @@
     "superagent": "^0.21.0",
     "vinyl-source-stream": "^1.0.0",
     "vinyl-transform": "^1.0.0",
+    "webmaker-analytics": "~0.1.7",
     "webmaker-auth": "1.0.2",
     "webmaker-login-ux": "git://github.com/mozilla/webmaker-login-ux#master"
   }

@@ -1,4 +1,5 @@
 var React = require("react");
+var analytics = require("webmaker-analytics");
 
 var LabeledField = React.createClass({
 
@@ -22,6 +23,7 @@ var LabeledField = React.createClass({
       editing: false
     });
 
+    analytics.event("Finish editing label field");
     if (this.props.onUpdate) {
       this.props.onUpdate(this.state.value);
     }
