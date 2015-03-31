@@ -1,5 +1,5 @@
 var request = require("superagent");
-var analytics = require("webmaker-analytics");
+var reactga = require("react-ga");
 
 module.exports = {
 
@@ -15,7 +15,8 @@ module.exports = {
   },
 
   like: function(evt) {
-    analytics.event("Like Entry");
+    reactga.event( { category: "Social Feedback",
+                     action: "Like Entry" });
     this.entry.likes = parseInt(this.entry.likes) + 1;
     this.setState({ entry: this.entry });
     this.saveEntry();
