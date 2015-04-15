@@ -49,5 +49,7 @@ Any patch should be tested in as many of our [supported browsers](#TODO-SUPPORTE
 
 ## Instrumentation (Metrics)
 
-- We use Google Analytics Event Tracking to measure user interactions we are interested in understanding. An example of how to do this can be seen in `app/components/LabeledField.jsx` and `app/mixins/Entry.js`.
-- Google Analytics account ID is set in `app/public/index.html`
+- We use Google Analytics Event Tracking to measure user interactions we are interested in understanding.
+- We us an npm module [react-ga](https://github.com/adamlofting/react-ga/) to do this in a consistent way across our apps.
+- An example of how to do this can be seen in `app/components/LabeledField.jsx` and `app/mixins/Entry.js`.
+- Google Analytics Tracking ID is currently set in `app/components/Gallery.jsx`
