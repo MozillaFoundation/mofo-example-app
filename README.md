@@ -1,3 +1,5 @@
+## This project has been discontinued
+
 # The  Mozilla Foundation Client-Side Prototype 
 
 Clone this repository if you're starting a new MoFo client-side application.
