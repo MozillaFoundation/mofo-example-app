@@ -1,0 +1,18 @@
+{
+    "name": "Mozilla Foundation Client-side Prototype",
+    "description": "A project that implements the Mozilla Foundation's opinions on how we should build web applications.",
+    "repository": {
+        "url": "https://github.com/MozillaFoundation/mofo-example-app",
+        "license": "MPL 2.0"
+    },
+    "bugs": {
+        "list": "https://github.com/MozillaFoundation/mofo-example-app/issues",
+        "report": "https://github.com/MozillaFoundation/mofo-example-app/issues/new"
+    },
+    "keywords": [
+        "node",
+        "less.css",
+        "gulp",
+        "react"
+    ]
+}
